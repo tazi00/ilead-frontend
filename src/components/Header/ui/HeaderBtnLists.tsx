@@ -1,32 +1,30 @@
 import { Button } from "@/components/ui/button";
 import HeaderActionButton from "./HeaderBtn";
-import {
-  Bell,
-  Calendar,
-  Ellipsis,
-  Funnel,
-  Plus,
-  Presentation,
-  SquareCheckBig,
-} from "lucide-react";
+import { Ellipsis, Funnel, Plus } from "lucide-react";
 import { useModalStore } from "@/store/useModalStore";
+import CreateLeadModal from "@/features/leads/components/HeaderBtnModals/CreateLeadModal";
 
 const headerButtons = [
-  { label: "Lead", icon: Plus, afterIcon: Funnel, modalEl: <h2>Lead</h2> },
-  { label: "Task", icon: Plus, afterIcon: Calendar, modalEl: <h2>Task</h2> },
   {
-    label: "Note",
+    label: "Lead",
     icon: Plus,
-    afterIcon: SquareCheckBig,
-    modalEl: <h2>Note</h2>,
+    afterIcon: Funnel,
+    modalEl: <CreateLeadModal />,
   },
-  { label: "Remider", icon: Plus, afterIcon: Bell, modalEl: <h2>Reminder</h2> },
-  {
-    label: "Meeting",
-    icon: Plus,
-    afterIcon: Presentation,
-    modalEl: <h2>Meeting</h2>,
-  },
+  // { label: "Task", icon: Plus, afterIcon: Calendar, modalEl: <h2>Task</h2> },
+  // {
+  //   label: "Note",
+  //   icon: Plus,
+  //   afterIcon: SquareCheckBig,
+  //   modalEl: <h2>Note</h2>,
+  // },
+  // { label: "Remider", icon: Plus, afterIcon: Bell, modalEl: <h2>Reminder</h2> },
+  // {
+  //   label: "Meeting",
+  //   icon: Plus,
+  //   afterIcon: Presentation,
+  //   modalEl: <h2>Meeting</h2>,
+  // },
 ];
 
 function HeaderBtnLists() {

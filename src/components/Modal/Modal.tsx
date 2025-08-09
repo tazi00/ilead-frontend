@@ -20,6 +20,7 @@ export function Modal() {
     formActions,
     customActions,
     modalSize,
+    submitLabel,
   } = useModalStore();
 
   const handleSubmit = () => {
@@ -63,13 +64,15 @@ export function Modal() {
               {modalType === "form" && !customActions && (
                 <>
                   <Button
-                    className="text-white bg-red-600 hover:bg-red-700"
+                    className="text-white bg-blue-600 hover:bg-blue-700"
                     onClick={handleSubmit}
                     disabled={
                       !formActions?.canSubmit || formActions?.isSubmitting
                     }
                   >
-                    {formActions?.isSubmitting ? "Deleting..." : "Delete Lead"}
+                    {formActions?.isSubmitting
+                      ? `${submitLabel || "Submit"}...`
+                      : submitLabel || "Submit"}
                   </Button>
                   <Button
                     className="bg-gray-500 hover:bg-gray-600"

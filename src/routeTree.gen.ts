@@ -10,270 +10,552 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as DashboardLayoutImport } from "./routes/_dashboardLayout";
-import { Route as AuthLayoutImport } from "./routes/_authLayout";
-import { Route as AppLayoutImport } from "./routes/_appLayout";
-import { Route as AppLayoutIndexImport } from "./routes/_appLayout/index";
-import { Route as AuthLayoutRegisterImport } from "./routes/_authLayout/register";
-import { Route as AuthLayoutLoginImport } from "./routes/_authLayout/login";
-import { Route as DashboardLayoutLeadRouteImport } from "./routes/_dashboardLayout/lead/route";
-import { Route as DashboardLayoutLeadIndexImport } from "./routes/_dashboardLayout/lead/index";
-import { Route as DashboardLayoutDashboardIndexImport } from "./routes/_dashboardLayout/dashboard/index";
+import { Route as rootRoute } from './routes/__root'
+import { Route as DashboardLayoutImport } from './routes/_dashboardLayout'
+import { Route as AuthLayoutImport } from './routes/_authLayout'
+import { Route as AppLayoutImport } from './routes/_appLayout'
+import { Route as AppLayoutIndexImport } from './routes/_appLayout/index'
+import { Route as AuthLayoutUserLoginImport } from './routes/_authLayout/user-login'
+import { Route as AuthLayoutResetPasswordImport } from './routes/_authLayout/reset-password'
+import { Route as AuthLayoutRegisterImport } from './routes/_authLayout/register'
+import { Route as AuthLayoutLoginImport } from './routes/_authLayout/login'
+import { Route as AuthLayoutForgetPasswordImport } from './routes/_authLayout/forget-password'
+import { Route as DashboardLayoutLeadRouteImport } from './routes/_dashboardLayout/lead/route'
+import { Route as DashboardLayoutWorkspaceLogsIndexImport } from './routes/_dashboardLayout/workspace-logs/index'
+import { Route as DashboardLayoutWorkspaceDetailsIndexImport } from './routes/_dashboardLayout/workspace-details/index'
+import { Route as DashboardLayoutUsersIndexImport } from './routes/_dashboardLayout/users/index'
+import { Route as DashboardLayoutUserProfileIndexImport } from './routes/_dashboardLayout/user-profile/index'
+import { Route as DashboardLayoutThirdPartyIntegrationIndexImport } from './routes/_dashboardLayout/third-party-integration/index'
+import { Route as DashboardLayoutStatusIndexImport } from './routes/_dashboardLayout/status/index'
+import { Route as DashboardLayoutSourceIndexImport } from './routes/_dashboardLayout/source/index'
+import { Route as DashboardLayoutLeadIndexImport } from './routes/_dashboardLayout/lead/index'
+import { Route as DashboardLayoutLabelIndexImport } from './routes/_dashboardLayout/label/index'
+import { Route as DashboardLayoutDashboardIndexImport } from './routes/_dashboardLayout/dashboard/index'
+import { Route as DashboardLayoutCustomerIndexImport } from './routes/_dashboardLayout/customer/index'
 
 // Create/Update Routes
 
 const DashboardLayoutRoute = DashboardLayoutImport.update({
-  id: "/_dashboardLayout",
+  id: '/_dashboardLayout',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const AuthLayoutRoute = AuthLayoutImport.update({
-  id: "/_authLayout",
+  id: '/_authLayout',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const AppLayoutRoute = AppLayoutImport.update({
-  id: "/_appLayout",
+  id: '/_appLayout',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const AppLayoutIndexRoute = AppLayoutIndexImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => AppLayoutRoute,
-} as any);
+} as any)
+
+const AuthLayoutUserLoginRoute = AuthLayoutUserLoginImport.update({
+  id: '/user-login',
+  path: '/user-login',
+  getParentRoute: () => AuthLayoutRoute,
+} as any)
+
+const AuthLayoutResetPasswordRoute = AuthLayoutResetPasswordImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => AuthLayoutRoute,
+} as any)
 
 const AuthLayoutRegisterRoute = AuthLayoutRegisterImport.update({
-  id: "/register",
-  path: "/register",
+  id: '/register',
+  path: '/register',
   getParentRoute: () => AuthLayoutRoute,
-} as any);
+} as any)
 
 const AuthLayoutLoginRoute = AuthLayoutLoginImport.update({
-  id: "/login",
-  path: "/login",
+  id: '/login',
+  path: '/login',
   getParentRoute: () => AuthLayoutRoute,
-} as any);
+} as any)
+
+const AuthLayoutForgetPasswordRoute = AuthLayoutForgetPasswordImport.update({
+  id: '/forget-password',
+  path: '/forget-password',
+  getParentRoute: () => AuthLayoutRoute,
+} as any)
 
 const DashboardLayoutLeadRouteRoute = DashboardLayoutLeadRouteImport.update({
-  id: "/lead",
-  path: "/lead",
+  id: '/lead',
+  path: '/lead',
   getParentRoute: () => DashboardLayoutRoute,
-} as any);
+} as any)
+
+const DashboardLayoutWorkspaceLogsIndexRoute =
+  DashboardLayoutWorkspaceLogsIndexImport.update({
+    id: '/workspace-logs/',
+    path: '/workspace-logs/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
+
+const DashboardLayoutWorkspaceDetailsIndexRoute =
+  DashboardLayoutWorkspaceDetailsIndexImport.update({
+    id: '/workspace-details/',
+    path: '/workspace-details/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
+
+const DashboardLayoutUsersIndexRoute = DashboardLayoutUsersIndexImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => DashboardLayoutRoute,
+} as any)
+
+const DashboardLayoutUserProfileIndexRoute =
+  DashboardLayoutUserProfileIndexImport.update({
+    id: '/user-profile/',
+    path: '/user-profile/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
+
+const DashboardLayoutThirdPartyIntegrationIndexRoute =
+  DashboardLayoutThirdPartyIntegrationIndexImport.update({
+    id: '/third-party-integration/',
+    path: '/third-party-integration/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
+
+const DashboardLayoutStatusIndexRoute = DashboardLayoutStatusIndexImport.update(
+  {
+    id: '/status/',
+    path: '/status/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any,
+)
+
+const DashboardLayoutSourceIndexRoute = DashboardLayoutSourceIndexImport.update(
+  {
+    id: '/source/',
+    path: '/source/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any,
+)
 
 const DashboardLayoutLeadIndexRoute = DashboardLayoutLeadIndexImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => DashboardLayoutLeadRouteRoute,
-} as any);
+} as any)
+
+const DashboardLayoutLabelIndexRoute = DashboardLayoutLabelIndexImport.update({
+  id: '/label/',
+  path: '/label/',
+  getParentRoute: () => DashboardLayoutRoute,
+} as any)
 
 const DashboardLayoutDashboardIndexRoute =
   DashboardLayoutDashboardIndexImport.update({
-    id: "/dashboard/",
-    path: "/dashboard/",
+    id: '/dashboard/',
+    path: '/dashboard/',
     getParentRoute: () => DashboardLayoutRoute,
-  } as any);
+  } as any)
+
+const DashboardLayoutCustomerIndexRoute =
+  DashboardLayoutCustomerIndexImport.update({
+    id: '/customer/',
+    path: '/customer/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/_appLayout": {
-      id: "/_appLayout";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof AppLayoutImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/_authLayout": {
-      id: "/_authLayout";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof AuthLayoutImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/_dashboardLayout": {
-      id: "/_dashboardLayout";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof DashboardLayoutImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/_dashboardLayout/lead": {
-      id: "/_dashboardLayout/lead";
-      path: "/lead";
-      fullPath: "/lead";
-      preLoaderRoute: typeof DashboardLayoutLeadRouteImport;
-      parentRoute: typeof DashboardLayoutImport;
-    };
-    "/_authLayout/login": {
-      id: "/_authLayout/login";
-      path: "/login";
-      fullPath: "/login";
-      preLoaderRoute: typeof AuthLayoutLoginImport;
-      parentRoute: typeof AuthLayoutImport;
-    };
-    "/_authLayout/register": {
-      id: "/_authLayout/register";
-      path: "/register";
-      fullPath: "/register";
-      preLoaderRoute: typeof AuthLayoutRegisterImport;
-      parentRoute: typeof AuthLayoutImport;
-    };
-    "/_appLayout/": {
-      id: "/_appLayout/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof AppLayoutIndexImport;
-      parentRoute: typeof AppLayoutImport;
-    };
-    "/_dashboardLayout/dashboard/": {
-      id: "/_dashboardLayout/dashboard/";
-      path: "/dashboard";
-      fullPath: "/dashboard";
-      preLoaderRoute: typeof DashboardLayoutDashboardIndexImport;
-      parentRoute: typeof DashboardLayoutImport;
-    };
-    "/_dashboardLayout/lead/": {
-      id: "/_dashboardLayout/lead/";
-      path: "/";
-      fullPath: "/lead/";
-      preLoaderRoute: typeof DashboardLayoutLeadIndexImport;
-      parentRoute: typeof DashboardLayoutLeadRouteImport;
-    };
+    '/_appLayout': {
+      id: '/_appLayout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AppLayoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/_authLayout': {
+      id: '/_authLayout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthLayoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/_dashboardLayout': {
+      id: '/_dashboardLayout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof DashboardLayoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/_dashboardLayout/lead': {
+      id: '/_dashboardLayout/lead'
+      path: '/lead'
+      fullPath: '/lead'
+      preLoaderRoute: typeof DashboardLayoutLeadRouteImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_authLayout/forget-password': {
+      id: '/_authLayout/forget-password'
+      path: '/forget-password'
+      fullPath: '/forget-password'
+      preLoaderRoute: typeof AuthLayoutForgetPasswordImport
+      parentRoute: typeof AuthLayoutImport
+    }
+    '/_authLayout/login': {
+      id: '/_authLayout/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof AuthLayoutLoginImport
+      parentRoute: typeof AuthLayoutImport
+    }
+    '/_authLayout/register': {
+      id: '/_authLayout/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof AuthLayoutRegisterImport
+      parentRoute: typeof AuthLayoutImport
+    }
+    '/_authLayout/reset-password': {
+      id: '/_authLayout/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof AuthLayoutResetPasswordImport
+      parentRoute: typeof AuthLayoutImport
+    }
+    '/_authLayout/user-login': {
+      id: '/_authLayout/user-login'
+      path: '/user-login'
+      fullPath: '/user-login'
+      preLoaderRoute: typeof AuthLayoutUserLoginImport
+      parentRoute: typeof AuthLayoutImport
+    }
+    '/_appLayout/': {
+      id: '/_appLayout/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppLayoutIndexImport
+      parentRoute: typeof AppLayoutImport
+    }
+    '/_dashboardLayout/customer/': {
+      id: '/_dashboardLayout/customer/'
+      path: '/customer'
+      fullPath: '/customer'
+      preLoaderRoute: typeof DashboardLayoutCustomerIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/dashboard/': {
+      id: '/_dashboardLayout/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardLayoutDashboardIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/label/': {
+      id: '/_dashboardLayout/label/'
+      path: '/label'
+      fullPath: '/label'
+      preLoaderRoute: typeof DashboardLayoutLabelIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/lead/': {
+      id: '/_dashboardLayout/lead/'
+      path: '/'
+      fullPath: '/lead/'
+      preLoaderRoute: typeof DashboardLayoutLeadIndexImport
+      parentRoute: typeof DashboardLayoutLeadRouteImport
+    }
+    '/_dashboardLayout/source/': {
+      id: '/_dashboardLayout/source/'
+      path: '/source'
+      fullPath: '/source'
+      preLoaderRoute: typeof DashboardLayoutSourceIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/status/': {
+      id: '/_dashboardLayout/status/'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof DashboardLayoutStatusIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/third-party-integration/': {
+      id: '/_dashboardLayout/third-party-integration/'
+      path: '/third-party-integration'
+      fullPath: '/third-party-integration'
+      preLoaderRoute: typeof DashboardLayoutThirdPartyIntegrationIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/user-profile/': {
+      id: '/_dashboardLayout/user-profile/'
+      path: '/user-profile'
+      fullPath: '/user-profile'
+      preLoaderRoute: typeof DashboardLayoutUserProfileIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/users/': {
+      id: '/_dashboardLayout/users/'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof DashboardLayoutUsersIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/workspace-details/': {
+      id: '/_dashboardLayout/workspace-details/'
+      path: '/workspace-details'
+      fullPath: '/workspace-details'
+      preLoaderRoute: typeof DashboardLayoutWorkspaceDetailsIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
+    '/_dashboardLayout/workspace-logs/': {
+      id: '/_dashboardLayout/workspace-logs/'
+      path: '/workspace-logs'
+      fullPath: '/workspace-logs'
+      preLoaderRoute: typeof DashboardLayoutWorkspaceLogsIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
   }
 }
 
 // Create and export the route tree
 
 interface AppLayoutRouteChildren {
-  AppLayoutIndexRoute: typeof AppLayoutIndexRoute;
+  AppLayoutIndexRoute: typeof AppLayoutIndexRoute
 }
 
 const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppLayoutIndexRoute: AppLayoutIndexRoute,
-};
+}
 
 const AppLayoutRouteWithChildren = AppLayoutRoute._addFileChildren(
-  AppLayoutRouteChildren
-);
+  AppLayoutRouteChildren,
+)
 
 interface AuthLayoutRouteChildren {
-  AuthLayoutLoginRoute: typeof AuthLayoutLoginRoute;
-  AuthLayoutRegisterRoute: typeof AuthLayoutRegisterRoute;
+  AuthLayoutForgetPasswordRoute: typeof AuthLayoutForgetPasswordRoute
+  AuthLayoutLoginRoute: typeof AuthLayoutLoginRoute
+  AuthLayoutRegisterRoute: typeof AuthLayoutRegisterRoute
+  AuthLayoutResetPasswordRoute: typeof AuthLayoutResetPasswordRoute
+  AuthLayoutUserLoginRoute: typeof AuthLayoutUserLoginRoute
 }
 
 const AuthLayoutRouteChildren: AuthLayoutRouteChildren = {
+  AuthLayoutForgetPasswordRoute: AuthLayoutForgetPasswordRoute,
   AuthLayoutLoginRoute: AuthLayoutLoginRoute,
   AuthLayoutRegisterRoute: AuthLayoutRegisterRoute,
-};
+  AuthLayoutResetPasswordRoute: AuthLayoutResetPasswordRoute,
+  AuthLayoutUserLoginRoute: AuthLayoutUserLoginRoute,
+}
 
 const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
-  AuthLayoutRouteChildren
-);
+  AuthLayoutRouteChildren,
+)
 
 interface DashboardLayoutLeadRouteRouteChildren {
-  DashboardLayoutLeadIndexRoute: typeof DashboardLayoutLeadIndexRoute;
+  DashboardLayoutLeadIndexRoute: typeof DashboardLayoutLeadIndexRoute
 }
 
 const DashboardLayoutLeadRouteRouteChildren: DashboardLayoutLeadRouteRouteChildren =
   {
     DashboardLayoutLeadIndexRoute: DashboardLayoutLeadIndexRoute,
-  };
+  }
 
 const DashboardLayoutLeadRouteRouteWithChildren =
   DashboardLayoutLeadRouteRoute._addFileChildren(
-    DashboardLayoutLeadRouteRouteChildren
-  );
+    DashboardLayoutLeadRouteRouteChildren,
+  )
 
 interface DashboardLayoutRouteChildren {
-  DashboardLayoutLeadRouteRoute: typeof DashboardLayoutLeadRouteRouteWithChildren;
-  DashboardLayoutDashboardIndexRoute: typeof DashboardLayoutDashboardIndexRoute;
+  DashboardLayoutLeadRouteRoute: typeof DashboardLayoutLeadRouteRouteWithChildren
+  DashboardLayoutCustomerIndexRoute: typeof DashboardLayoutCustomerIndexRoute
+  DashboardLayoutDashboardIndexRoute: typeof DashboardLayoutDashboardIndexRoute
+  DashboardLayoutLabelIndexRoute: typeof DashboardLayoutLabelIndexRoute
+  DashboardLayoutSourceIndexRoute: typeof DashboardLayoutSourceIndexRoute
+  DashboardLayoutStatusIndexRoute: typeof DashboardLayoutStatusIndexRoute
+  DashboardLayoutThirdPartyIntegrationIndexRoute: typeof DashboardLayoutThirdPartyIntegrationIndexRoute
+  DashboardLayoutUserProfileIndexRoute: typeof DashboardLayoutUserProfileIndexRoute
+  DashboardLayoutUsersIndexRoute: typeof DashboardLayoutUsersIndexRoute
+  DashboardLayoutWorkspaceDetailsIndexRoute: typeof DashboardLayoutWorkspaceDetailsIndexRoute
+  DashboardLayoutWorkspaceLogsIndexRoute: typeof DashboardLayoutWorkspaceLogsIndexRoute
 }
 
 const DashboardLayoutRouteChildren: DashboardLayoutRouteChildren = {
   DashboardLayoutLeadRouteRoute: DashboardLayoutLeadRouteRouteWithChildren,
+  DashboardLayoutCustomerIndexRoute: DashboardLayoutCustomerIndexRoute,
   DashboardLayoutDashboardIndexRoute: DashboardLayoutDashboardIndexRoute,
-};
+  DashboardLayoutLabelIndexRoute: DashboardLayoutLabelIndexRoute,
+  DashboardLayoutSourceIndexRoute: DashboardLayoutSourceIndexRoute,
+  DashboardLayoutStatusIndexRoute: DashboardLayoutStatusIndexRoute,
+  DashboardLayoutThirdPartyIntegrationIndexRoute:
+    DashboardLayoutThirdPartyIntegrationIndexRoute,
+  DashboardLayoutUserProfileIndexRoute: DashboardLayoutUserProfileIndexRoute,
+  DashboardLayoutUsersIndexRoute: DashboardLayoutUsersIndexRoute,
+  DashboardLayoutWorkspaceDetailsIndexRoute:
+    DashboardLayoutWorkspaceDetailsIndexRoute,
+  DashboardLayoutWorkspaceLogsIndexRoute:
+    DashboardLayoutWorkspaceLogsIndexRoute,
+}
 
 const DashboardLayoutRouteWithChildren = DashboardLayoutRoute._addFileChildren(
-  DashboardLayoutRouteChildren
-);
+  DashboardLayoutRouteChildren,
+)
 
 export interface FileRoutesByFullPath {
-  "": typeof DashboardLayoutRouteWithChildren;
-  "/lead": typeof DashboardLayoutLeadRouteRouteWithChildren;
-  "/login": typeof AuthLayoutLoginRoute;
-  "/register": typeof AuthLayoutRegisterRoute;
-  "/": typeof AppLayoutIndexRoute;
-  "/dashboard": typeof DashboardLayoutDashboardIndexRoute;
-  "/lead/": typeof DashboardLayoutLeadIndexRoute;
+  '': typeof DashboardLayoutRouteWithChildren
+  '/lead': typeof DashboardLayoutLeadRouteRouteWithChildren
+  '/forget-password': typeof AuthLayoutForgetPasswordRoute
+  '/login': typeof AuthLayoutLoginRoute
+  '/register': typeof AuthLayoutRegisterRoute
+  '/reset-password': typeof AuthLayoutResetPasswordRoute
+  '/user-login': typeof AuthLayoutUserLoginRoute
+  '/': typeof AppLayoutIndexRoute
+  '/customer': typeof DashboardLayoutCustomerIndexRoute
+  '/dashboard': typeof DashboardLayoutDashboardIndexRoute
+  '/label': typeof DashboardLayoutLabelIndexRoute
+  '/lead/': typeof DashboardLayoutLeadIndexRoute
+  '/source': typeof DashboardLayoutSourceIndexRoute
+  '/status': typeof DashboardLayoutStatusIndexRoute
+  '/third-party-integration': typeof DashboardLayoutThirdPartyIntegrationIndexRoute
+  '/user-profile': typeof DashboardLayoutUserProfileIndexRoute
+  '/users': typeof DashboardLayoutUsersIndexRoute
+  '/workspace-details': typeof DashboardLayoutWorkspaceDetailsIndexRoute
+  '/workspace-logs': typeof DashboardLayoutWorkspaceLogsIndexRoute
 }
 
 export interface FileRoutesByTo {
-  "": typeof DashboardLayoutRouteWithChildren;
-  "/login": typeof AuthLayoutLoginRoute;
-  "/register": typeof AuthLayoutRegisterRoute;
-  "/": typeof AppLayoutIndexRoute;
-  "/dashboard": typeof DashboardLayoutDashboardIndexRoute;
-  "/lead": typeof DashboardLayoutLeadIndexRoute;
+  '': typeof DashboardLayoutRouteWithChildren
+  '/forget-password': typeof AuthLayoutForgetPasswordRoute
+  '/login': typeof AuthLayoutLoginRoute
+  '/register': typeof AuthLayoutRegisterRoute
+  '/reset-password': typeof AuthLayoutResetPasswordRoute
+  '/user-login': typeof AuthLayoutUserLoginRoute
+  '/': typeof AppLayoutIndexRoute
+  '/customer': typeof DashboardLayoutCustomerIndexRoute
+  '/dashboard': typeof DashboardLayoutDashboardIndexRoute
+  '/label': typeof DashboardLayoutLabelIndexRoute
+  '/lead': typeof DashboardLayoutLeadIndexRoute
+  '/source': typeof DashboardLayoutSourceIndexRoute
+  '/status': typeof DashboardLayoutStatusIndexRoute
+  '/third-party-integration': typeof DashboardLayoutThirdPartyIntegrationIndexRoute
+  '/user-profile': typeof DashboardLayoutUserProfileIndexRoute
+  '/users': typeof DashboardLayoutUsersIndexRoute
+  '/workspace-details': typeof DashboardLayoutWorkspaceDetailsIndexRoute
+  '/workspace-logs': typeof DashboardLayoutWorkspaceLogsIndexRoute
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute;
-  "/_appLayout": typeof AppLayoutRouteWithChildren;
-  "/_authLayout": typeof AuthLayoutRouteWithChildren;
-  "/_dashboardLayout": typeof DashboardLayoutRouteWithChildren;
-  "/_dashboardLayout/lead": typeof DashboardLayoutLeadRouteRouteWithChildren;
-  "/_authLayout/login": typeof AuthLayoutLoginRoute;
-  "/_authLayout/register": typeof AuthLayoutRegisterRoute;
-  "/_appLayout/": typeof AppLayoutIndexRoute;
-  "/_dashboardLayout/dashboard/": typeof DashboardLayoutDashboardIndexRoute;
-  "/_dashboardLayout/lead/": typeof DashboardLayoutLeadIndexRoute;
+  __root__: typeof rootRoute
+  '/_appLayout': typeof AppLayoutRouteWithChildren
+  '/_authLayout': typeof AuthLayoutRouteWithChildren
+  '/_dashboardLayout': typeof DashboardLayoutRouteWithChildren
+  '/_dashboardLayout/lead': typeof DashboardLayoutLeadRouteRouteWithChildren
+  '/_authLayout/forget-password': typeof AuthLayoutForgetPasswordRoute
+  '/_authLayout/login': typeof AuthLayoutLoginRoute
+  '/_authLayout/register': typeof AuthLayoutRegisterRoute
+  '/_authLayout/reset-password': typeof AuthLayoutResetPasswordRoute
+  '/_authLayout/user-login': typeof AuthLayoutUserLoginRoute
+  '/_appLayout/': typeof AppLayoutIndexRoute
+  '/_dashboardLayout/customer/': typeof DashboardLayoutCustomerIndexRoute
+  '/_dashboardLayout/dashboard/': typeof DashboardLayoutDashboardIndexRoute
+  '/_dashboardLayout/label/': typeof DashboardLayoutLabelIndexRoute
+  '/_dashboardLayout/lead/': typeof DashboardLayoutLeadIndexRoute
+  '/_dashboardLayout/source/': typeof DashboardLayoutSourceIndexRoute
+  '/_dashboardLayout/status/': typeof DashboardLayoutStatusIndexRoute
+  '/_dashboardLayout/third-party-integration/': typeof DashboardLayoutThirdPartyIntegrationIndexRoute
+  '/_dashboardLayout/user-profile/': typeof DashboardLayoutUserProfileIndexRoute
+  '/_dashboardLayout/users/': typeof DashboardLayoutUsersIndexRoute
+  '/_dashboardLayout/workspace-details/': typeof DashboardLayoutWorkspaceDetailsIndexRoute
+  '/_dashboardLayout/workspace-logs/': typeof DashboardLayoutWorkspaceLogsIndexRoute
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
+  fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | ""
-    | "/lead"
-    | "/login"
-    | "/register"
-    | "/"
-    | "/dashboard"
-    | "/lead/";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "" | "/login" | "/register" | "/" | "/dashboard" | "/lead";
+    | ''
+    | '/lead'
+    | '/forget-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/user-login'
+    | '/'
+    | '/customer'
+    | '/dashboard'
+    | '/label'
+    | '/lead/'
+    | '/source'
+    | '/status'
+    | '/third-party-integration'
+    | '/user-profile'
+    | '/users'
+    | '/workspace-details'
+    | '/workspace-logs'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | ''
+    | '/forget-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/user-login'
+    | '/'
+    | '/customer'
+    | '/dashboard'
+    | '/label'
+    | '/lead'
+    | '/source'
+    | '/status'
+    | '/third-party-integration'
+    | '/user-profile'
+    | '/users'
+    | '/workspace-details'
+    | '/workspace-logs'
   id:
-    | "__root__"
-    | "/_appLayout"
-    | "/_authLayout"
-    | "/_dashboardLayout"
-    | "/_dashboardLayout/lead"
-    | "/_authLayout/login"
-    | "/_authLayout/register"
-    | "/_appLayout/"
-    | "/_dashboardLayout/dashboard/"
-    | "/_dashboardLayout/lead/";
-  fileRoutesById: FileRoutesById;
+    | '__root__'
+    | '/_appLayout'
+    | '/_authLayout'
+    | '/_dashboardLayout'
+    | '/_dashboardLayout/lead'
+    | '/_authLayout/forget-password'
+    | '/_authLayout/login'
+    | '/_authLayout/register'
+    | '/_authLayout/reset-password'
+    | '/_authLayout/user-login'
+    | '/_appLayout/'
+    | '/_dashboardLayout/customer/'
+    | '/_dashboardLayout/dashboard/'
+    | '/_dashboardLayout/label/'
+    | '/_dashboardLayout/lead/'
+    | '/_dashboardLayout/source/'
+    | '/_dashboardLayout/status/'
+    | '/_dashboardLayout/third-party-integration/'
+    | '/_dashboardLayout/user-profile/'
+    | '/_dashboardLayout/users/'
+    | '/_dashboardLayout/workspace-details/'
+    | '/_dashboardLayout/workspace-logs/'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  AppLayoutRoute: typeof AppLayoutRouteWithChildren;
-  AuthLayoutRoute: typeof AuthLayoutRouteWithChildren;
-  DashboardLayoutRoute: typeof DashboardLayoutRouteWithChildren;
+  AppLayoutRoute: typeof AppLayoutRouteWithChildren
+  AuthLayoutRoute: typeof AuthLayoutRouteWithChildren
+  DashboardLayoutRoute: typeof DashboardLayoutRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   AppLayoutRoute: AppLayoutRouteWithChildren,
   AuthLayoutRoute: AuthLayoutRouteWithChildren,
   DashboardLayoutRoute: DashboardLayoutRouteWithChildren,
-};
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
 /* ROUTE_MANIFEST_START
 {
@@ -295,15 +577,27 @@ export const routeTree = rootRoute
     "/_authLayout": {
       "filePath": "_authLayout.tsx",
       "children": [
+        "/_authLayout/forget-password",
         "/_authLayout/login",
-        "/_authLayout/register"
+        "/_authLayout/register",
+        "/_authLayout/reset-password",
+        "/_authLayout/user-login"
       ]
     },
     "/_dashboardLayout": {
       "filePath": "_dashboardLayout.tsx",
       "children": [
         "/_dashboardLayout/lead",
-        "/_dashboardLayout/dashboard/"
+        "/_dashboardLayout/customer/",
+        "/_dashboardLayout/dashboard/",
+        "/_dashboardLayout/label/",
+        "/_dashboardLayout/source/",
+        "/_dashboardLayout/status/",
+        "/_dashboardLayout/third-party-integration/",
+        "/_dashboardLayout/user-profile/",
+        "/_dashboardLayout/users/",
+        "/_dashboardLayout/workspace-details/",
+        "/_dashboardLayout/workspace-logs/"
       ]
     },
     "/_dashboardLayout/lead": {
@@ -313,6 +607,10 @@ export const routeTree = rootRoute
         "/_dashboardLayout/lead/"
       ]
     },
+    "/_authLayout/forget-password": {
+      "filePath": "_authLayout/forget-password.tsx",
+      "parent": "/_authLayout"
+    },
     "/_authLayout/login": {
       "filePath": "_authLayout/login.tsx",
       "parent": "/_authLayout"
@@ -321,17 +619,61 @@ export const routeTree = rootRoute
       "filePath": "_authLayout/register.tsx",
       "parent": "/_authLayout"
     },
+    "/_authLayout/reset-password": {
+      "filePath": "_authLayout/reset-password.tsx",
+      "parent": "/_authLayout"
+    },
+    "/_authLayout/user-login": {
+      "filePath": "_authLayout/user-login.tsx",
+      "parent": "/_authLayout"
+    },
     "/_appLayout/": {
       "filePath": "_appLayout/index.tsx",
       "parent": "/_appLayout"
+    },
+    "/_dashboardLayout/customer/": {
+      "filePath": "_dashboardLayout/customer/index.tsx",
+      "parent": "/_dashboardLayout"
     },
     "/_dashboardLayout/dashboard/": {
       "filePath": "_dashboardLayout/dashboard/index.tsx",
       "parent": "/_dashboardLayout"
     },
+    "/_dashboardLayout/label/": {
+      "filePath": "_dashboardLayout/label/index.tsx",
+      "parent": "/_dashboardLayout"
+    },
     "/_dashboardLayout/lead/": {
       "filePath": "_dashboardLayout/lead/index.tsx",
       "parent": "/_dashboardLayout/lead"
+    },
+    "/_dashboardLayout/source/": {
+      "filePath": "_dashboardLayout/source/index.tsx",
+      "parent": "/_dashboardLayout"
+    },
+    "/_dashboardLayout/status/": {
+      "filePath": "_dashboardLayout/status/index.tsx",
+      "parent": "/_dashboardLayout"
+    },
+    "/_dashboardLayout/third-party-integration/": {
+      "filePath": "_dashboardLayout/third-party-integration/index.tsx",
+      "parent": "/_dashboardLayout"
+    },
+    "/_dashboardLayout/user-profile/": {
+      "filePath": "_dashboardLayout/user-profile/index.tsx",
+      "parent": "/_dashboardLayout"
+    },
+    "/_dashboardLayout/users/": {
+      "filePath": "_dashboardLayout/users/index.tsx",
+      "parent": "/_dashboardLayout"
+    },
+    "/_dashboardLayout/workspace-details/": {
+      "filePath": "_dashboardLayout/workspace-details/index.tsx",
+      "parent": "/_dashboardLayout"
+    },
+    "/_dashboardLayout/workspace-logs/": {
+      "filePath": "_dashboardLayout/workspace-logs/index.tsx",
+      "parent": "/_dashboardLayout"
     }
   }
 }

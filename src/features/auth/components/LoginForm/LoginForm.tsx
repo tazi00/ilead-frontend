@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import productByImg from "@/assets/product_by_img.png";
 
 function FieldInfo({ field }: { field: AnyFieldApi }) {
   return (
@@ -36,9 +35,7 @@ function LoginForm() {
   console.log(error);
   return (
     <div className="login_form w-[450px] max-w-full lg:w-full mx-auto">
-      <h3 className="heading mt-3 mb-6">
-        Welcome to 365 Lead Management System! 👋
-      </h3>
+      <h3 className="heading mt-3 mb-6">Welcome to ETC CRM! 👋</h3>
       {isLoading && <p>Loading...</p>}
       {!data?.status ? (
         <p className="error">{data?.message}</p>
@@ -97,7 +94,7 @@ function LoginForm() {
           />
         </div>
         <Link
-          to="/"
+          to="/forget-password"
           className={`justify-end w-full my-1 ${buttonVariants({ variant: "link", size: "sm" })}`}
         >
           Forgot Password?
@@ -118,13 +115,20 @@ function LoginForm() {
               <Button type="submit" disabled={!canSubmit} className="w-full">
                 {isSubmitting ? "..." : "Join Our Channel"}
               </Button>
-              <h3 className="small-primary text-sm text-center my-5">
+
+              {/* <h3 className="small-primary text-sm text-center my-5">
                 Product by
               </h3>
-              <img className="mx-auto" src={productByImg} alt="" />
+              <img className="mx-auto" src={productByImg} alt="" /> */}
             </div>
           )}
         />
+
+        <Link to="/user-login">
+          <Button type="button" className="w-full mt-5">
+            All Users Login
+          </Button>
+        </Link>
       </form>
     </div>
   );

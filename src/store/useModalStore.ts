@@ -29,6 +29,8 @@ type ModalStore = {
   setData?: (data: any) => void;
   setFormActions?: (actions: FormActions) => void;
   closeModal: () => void;
+  submitLabel?: string;
+  setSubmitLabel?: (label: string | undefined) => void;
 };
 
 export const useModalStore = create<ModalStore>((set) => ({
@@ -59,5 +61,9 @@ export const useModalStore = create<ModalStore>((set) => ({
       formActions: undefined,
       customActions: undefined,
       modalTitle: undefined,
+      submitLabel: undefined,
     }),
+
+  submitLabel: undefined,
+  setSubmitLabel: (label) => set({ submitLabel: label }),
 }));

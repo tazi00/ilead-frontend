@@ -31,7 +31,6 @@ declare module "@tanstack/react-router" {
 }
 function App() {
   const { data } = useUser();
-  console.log(data);
 
   return (
     <>

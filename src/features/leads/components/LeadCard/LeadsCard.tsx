@@ -19,7 +19,8 @@ import {
   LeadDetail,
   LeadLabels,
 } from "../LeadModals";
-import { Button } from "@/components/ui/button";
+
+import { LeadFollowUp, LeadStatus } from "../LeadModals/LeadModals";
 
 interface LeadCardProps {
   lead: Lead;
@@ -29,7 +30,7 @@ const CARD_ACTIONS = [
   {
     icon: Trash,
     color: "red",
-    label: "Delete",
+    label: "Delete Lead",
     title: "Delete Lead",
     el: <LeadDelete />,
     type: "form" as const,
@@ -38,7 +39,7 @@ const CARD_ACTIONS = [
   {
     icon: Tag,
     color: "green",
-    label: "Tag",
+    label: "Lead Label Assign",
     title: "Lead Label Assign",
     el: <LeadLabels />,
     type: "action" as const,
@@ -47,16 +48,16 @@ const CARD_ACTIONS = [
   {
     icon: TrendingUp,
     color: "black",
-    label: "Trend",
-    title: "change Lead Assign To",
+    label: "Lead Assignment",
+    title: "Change Lead Assign To",
     el: <LeadAssign />,
-    type: "action" as const,
+    type: "form",
     customActions: undefined,
   },
   {
     icon: UserPlus,
     color: "blue",
-    label: "Add User",
+    label: "Convert Lead to Customer",
     title: null,
     el: <LeadCreateCustomer />,
     type: "info" as const,
@@ -65,46 +66,38 @@ const CARD_ACTIONS = [
   {
     icon: RefreshCw,
     color: "blue",
-    label: "Refresh",
+    label: "Change Lead Status",
     title: "Change Lead Status",
-    el: <div>Data refreshed successfully!</div>,
+    el: <LeadStatus />,
     type: "action" as const,
     customActions: undefined,
   },
   {
     icon: Send,
     color: "white",
-    label: "Send",
+    label: "Lead Follow Up",
     title: "Add Lead Follow Up",
-    el: <div>Send email to lead...</div>,
+    el: <LeadFollowUp />,
     type: "form" as const,
-    customActions: (
-      <>
-        <Button className="bg-blue-600 hover:bg-blue-700">Submit</Button>
-        <Button variant="outline">Cancel</Button>
-      </>
-    ),
+    customActions: undefined,
   },
 ] as const;
+
 export const LeadCard = memo(({ lead }: LeadCardProps) => {
-  // Convert String objects to primitive strings to avoid React rendering issues
   const assignedToName = lead.assigned_to.name;
   const leadName = String(lead.name);
   const phoneNumber = String(lead.phone_number);
   const createdAt = String(lead.createdAt);
-  const assignedBy = String(lead.assigned_by || "Test User");
-
-  // const { openModal, setModalTitle } = useModalStore();
+  const assignedBy = String(lead?.assigned_by?.name || "Test User");
   const { openModal, setModalTitle, setData, setModalSize } = useModalStore();
 
   return (
-    <div className="bg-primary rounded-lg shadow hover:shadow-lg transition-all">
+    <div className="bg-white dark:bg-primary rounded-lg shadow hover:shadow-lg transition-all">
       <div
-        className=" cursor-pointer"
+        className="cursor-pointer"
         onClick={() => {
-          console.log("Lead clicked:", lead._id);
           setModalTitle?.("Lead Details");
-          // setData?.(lead.meta.ray_id);
+          setData?.({ _id: lead._id, rayId: lead?.meta?.ray_id });
 
           setModalSize?.("lg");
           openModal({
@@ -114,49 +107,64 @@ export const LeadCard = memo(({ lead }: LeadCardProps) => {
         }}
       >
         <div className="pt-5 px-6">
-          <span className="bg-red-600 text-white text-xs px-3 py-1 rounded inline-block mb-3">
-            {lead?.labels[0]?.title || "No Label"}
-          </span>
+          <div className="flex flex-wrap gap-2 mb-3">
+            {lead.labels?.length > 0 ? (
+              lead.labels.map((label) => (
+                <span
+                  key={label._id || label.title}
+                  className="bg-red-600 text-white text-xs px-3 py-1 rounded"
+                >
+                  {label.title}
+                </span>
+              ))
+            ) : (
+              <span className="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                No Label
+              </span>
+            )}
+          </div>
 
-          <div className="text-white text-xs font-medium flex items-center gap-2 mb-2">
+          <div className="text-gray-800 dark:text-white text-xs font-medium flex items-center gap-2 mb-2">
             <User color="blue" size={18} />
             <span>{leadName}</span>
           </div>
 
-          <div className="text-white text-xs font-medium flex items-center gap-2 mb-4">
+          <div className="text-gray-800 dark:text-white text-xs font-medium flex items-center gap-2 mb-4">
             <Phone color="green" size={18} />
             <span>{phoneNumber}</span>
           </div>
         </div>
 
         <div className="space-y-1 px-6">
-          <div className="text-white text-xs flex items-center gap-1">
+          <div className="text-gray-800 dark:text-white text-xs flex items-center gap-1">
             <span className="font-medium">CD:</span>
-            <span>{createdAt}</span>
+            <span>{new Date(createdAt).toLocaleString()}</span>
           </div>
-          <div className="text-white text-xs flex items-center gap-1">
+          <div className="text-gray-800 dark:text-white text-xs flex items-center gap-1">
             <span className="font-medium">BY:</span>
             <span>{assignedBy}</span>
           </div>
-          <div className="text-white text-xs flex items-center gap-1">
+          <div className="text-gray-800 dark:text-white text-xs flex items-center gap-1">
             <span className="font-medium">TO:</span>
             <span>{assignedToName}</span>
           </div>
         </div>
       </div>
 
-      <div className="mt-3 items-center py-3 px-2 border-t border-gray-600 flex gap-1.5">
+      <div className="mt-3 items-center py-3 px-2 border-t border-gray-300 dark:border-gray-600 flex gap-1.5">
         {CARD_ACTIONS.map(
           ({ icon: Icon, color, label, el, type, customActions, title }) => (
             <button
               key={label}
-              className="p-1 hover:bg-gray-700 rounded transition-colors"
+              className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded transition-colors cursor-pointer"
               title={label}
               onClick={() => {
-                console.log("action clicked", label);
                 setModalTitle?.(title);
                 setModalSize?.("sm");
-                setData?.(lead?.meta?.ray_id);
+                setData?.({
+                  _id: lead._id,
+                  rayId: lead.meta?.ray_id,
+                });
                 openModal({
                   content: el,
                   type,
@@ -164,11 +172,18 @@ export const LeadCard = memo(({ lead }: LeadCardProps) => {
                 });
               }}
             >
-              <Icon size={16} color={color} />
+              <div className="relative">
+                <Icon size={16} color={color} />
+                {label === "Lead Follow Up" && (
+                  <span className="absolute -top-1 -right-1 bg-gray-300 dark:bg-gray-800 text-black dark:text-white text-[10px] font-semibold rounded-full w-4 h-4 flex items-center justify-center">
+                    {lead.follow_ups?.length ?? 0}
+                  </span>
+                )}
+              </div>
             </button>
           )
         )}
-        <button className="ms-auto p-1 hover:bg-gray-700 rounded transition-colors">
+        <button className="ms-auto p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded transition-colors">
           <EllipsisVertical size={16} />
         </button>
       </div>

@@ -7,6 +7,7 @@ import type { Lead, Status } from "@/features/leads/types";
 interface LeadsBoardProps {
   leads: Lead[];
   statuses: Status[];
+  setIsTableView: (val: boolean) => void;
 }
 
 export const LeadsBoard = memo(({ leads, statuses }: LeadsBoardProps) => {

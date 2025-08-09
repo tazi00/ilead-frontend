@@ -14,10 +14,49 @@ interface StatusResponse {
   data: Status[];
 }
 
-/**
- * Service for auth routes (auto-prefixes with /auth)
- */
-class StatusService extends ApiClient {
+interface CreateStatusResponse {
+  message: string;
+  status: string;
+  data: Status;
+}
+
+interface CreateStatusPayload {
+  title: string;
+  description: string;
+}
+interface PaginatedStatusResponse {
+  message: string;
+  status: string;
+  data: {
+    statuses: Status[];
+    pagination: {
+      total: number;
+      currentPage: number;
+      limit: number;
+      totalPage: number;
+    };
+  };
+}
+
+interface DeleteStatusParams {
+  id: string;
+}
+
+interface EditStatusPayload {
+  statusId: string;
+  title: string;
+  description: string;
+  meta?: {
+    is_active: boolean;
+  };
+}
+
+interface EditStatusResponse {
+  message: string;
+  status: string;
+  data: Status;
+}
+export class StatusService extends ApiClient {
   constructor() {
     super("status");
   }
@@ -26,13 +65,30 @@ class StatusService extends ApiClient {
     return this.get<StatusResponse>("all");
   }
 
-  //   async register(payload: RegisterPayload): Promise<AuthResponse> {
-  //     return this.post<AuthResponse>("/register", payload);
-  //   }
+  async getPaginatedStatuses(page = 1, limit = 10) {
+    return this.get<PaginatedStatusResponse>(`/paginated-statuses`, {
+      params: { page, limit },
+    });
+  }
 
-  //   async me(): Promise<{ id: string; email: string }> {
-  //     return this.get("/me");
-  //   }
+  async createStatus(
+    payload: CreateStatusPayload
+  ): Promise<CreateStatusResponse> {
+    const res = await this.post<CreateStatusResponse>("/create", payload);
+    return res.data;
+  }
+
+  async deleteStatus({ id }: DeleteStatusParams) {
+    const res = await this.delete<{ message: string; status: string }>(
+      `/delete/${id}`
+    );
+    return res.data;
+  }
+
+  async editStatus(payload: EditStatusPayload): Promise<EditStatusResponse> {
+    const res = await this.patch<EditStatusResponse>(`/update`, payload);
+    return res.data;
+  }
 }
 
 export const statusService = new StatusService(); // singleton
