@@ -59,6 +59,10 @@ interface MissedFollowUps {
   data: {
     leadId: string;
     name: string;
+    phone_number: string;
+    email: string;
+    address: string;
+    company_name: string;
     status: { _id: string; title: string };
     assigned_to: { _id: string; name: string; email: string };
     labels: { _id: string; title: string }[];

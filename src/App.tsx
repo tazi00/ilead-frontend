@@ -78,7 +78,7 @@ function App() {
 
 const handleLogout = async () => {
   try {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}api/auth/logout`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
       method: "GET", // usually logout should be POST, but keep GET if your API says so
       credentials: "include", // if you use cookies
     });

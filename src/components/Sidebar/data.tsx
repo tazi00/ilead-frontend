@@ -105,6 +105,18 @@ export const navItems: NavItem[] = [
         ],
       },
       {
+        name: "Web Settings",
+        icon: <Settings size={18} />,
+        subItems: [
+          {
+            name: "Whatsapp Integration",
+            icon: <Settings size={18} />,
+            path: "/whatsapp-settings",
+            roles: ["Admin", "Superadmin"],
+          },
+        ],
+      },
+      {
         name: "Leads Trash",
         icon: <Trash2 size={18} />,
         path: "/lead-trash",

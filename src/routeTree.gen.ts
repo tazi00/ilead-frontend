@@ -24,6 +24,7 @@ import { Route as DashboardLayoutLeadTrashRouteImport } from './routes/_dashboar
 import { Route as DashboardLayoutLeadRouteImport } from './routes/_dashboardLayout/lead/route'
 import { Route as DashboardLayoutWorkspaceLogsIndexImport } from './routes/_dashboardLayout/workspace-logs/index'
 import { Route as DashboardLayoutWorkspaceDetailsIndexImport } from './routes/_dashboardLayout/workspace-details/index'
+import { Route as DashboardLayoutWhatsappSettingsIndexImport } from './routes/_dashboardLayout/whatsapp-settings/index'
 import { Route as DashboardLayoutWhatsappAutomationRulesIndexImport } from './routes/_dashboardLayout/whatsapp-automation-rules/index'
 import { Route as DashboardLayoutUsersIndexImport } from './routes/_dashboardLayout/users/index'
 import { Route as DashboardLayoutUserProfileIndexImport } from './routes/_dashboardLayout/user-profile/index'
@@ -124,6 +125,13 @@ const DashboardLayoutWorkspaceDetailsIndexRoute =
   DashboardLayoutWorkspaceDetailsIndexImport.update({
     id: '/workspace-details/',
     path: '/workspace-details/',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
+
+const DashboardLayoutWhatsappSettingsIndexRoute =
+  DashboardLayoutWhatsappSettingsIndexImport.update({
+    id: '/whatsapp-settings/',
+    path: '/whatsapp-settings/',
     getParentRoute: () => DashboardLayoutRoute,
   } as any)
 
@@ -491,6 +499,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardLayoutWhatsappAutomationRulesIndexImport
       parentRoute: typeof DashboardLayoutImport
     }
+    '/_dashboardLayout/whatsapp-settings/': {
+      id: '/_dashboardLayout/whatsapp-settings/'
+      path: '/whatsapp-settings'
+      fullPath: '/whatsapp-settings'
+      preLoaderRoute: typeof DashboardLayoutWhatsappSettingsIndexImport
+      parentRoute: typeof DashboardLayoutImport
+    }
     '/_dashboardLayout/workspace-details/': {
       id: '/_dashboardLayout/workspace-details/'
       path: '/workspace-details'
@@ -603,6 +618,7 @@ interface DashboardLayoutRouteChildren {
   DashboardLayoutUserProfileIndexRoute: typeof DashboardLayoutUserProfileIndexRoute
   DashboardLayoutUsersIndexRoute: typeof DashboardLayoutUsersIndexRoute
   DashboardLayoutWhatsappAutomationRulesIndexRoute: typeof DashboardLayoutWhatsappAutomationRulesIndexRoute
+  DashboardLayoutWhatsappSettingsIndexRoute: typeof DashboardLayoutWhatsappSettingsIndexRoute
   DashboardLayoutWorkspaceDetailsIndexRoute: typeof DashboardLayoutWorkspaceDetailsIndexRoute
   DashboardLayoutWorkspaceLogsIndexRoute: typeof DashboardLayoutWorkspaceLogsIndexRoute
   DashboardLayoutGeneralTemplatesLeadTemplateIndexRoute: typeof DashboardLayoutGeneralTemplatesLeadTemplateIndexRoute
@@ -629,6 +645,8 @@ const DashboardLayoutRouteChildren: DashboardLayoutRouteChildren = {
   DashboardLayoutUsersIndexRoute: DashboardLayoutUsersIndexRoute,
   DashboardLayoutWhatsappAutomationRulesIndexRoute:
     DashboardLayoutWhatsappAutomationRulesIndexRoute,
+  DashboardLayoutWhatsappSettingsIndexRoute:
+    DashboardLayoutWhatsappSettingsIndexRoute,
   DashboardLayoutWorkspaceDetailsIndexRoute:
     DashboardLayoutWorkspaceDetailsIndexRoute,
   DashboardLayoutWorkspaceLogsIndexRoute:
@@ -674,6 +692,7 @@ export interface FileRoutesByFullPath {
   '/user-profile': typeof DashboardLayoutUserProfileIndexRoute
   '/users': typeof DashboardLayoutUsersIndexRoute
   '/whatsapp-automation-rules': typeof DashboardLayoutWhatsappAutomationRulesIndexRoute
+  '/whatsapp-settings': typeof DashboardLayoutWhatsappSettingsIndexRoute
   '/workspace-details': typeof DashboardLayoutWorkspaceDetailsIndexRoute
   '/workspace-logs': typeof DashboardLayoutWorkspaceLogsIndexRoute
   '/general-templates/lead-template': typeof DashboardLayoutGeneralTemplatesLeadTemplateIndexRoute
@@ -709,6 +728,7 @@ export interface FileRoutesByTo {
   '/user-profile': typeof DashboardLayoutUserProfileIndexRoute
   '/users': typeof DashboardLayoutUsersIndexRoute
   '/whatsapp-automation-rules': typeof DashboardLayoutWhatsappAutomationRulesIndexRoute
+  '/whatsapp-settings': typeof DashboardLayoutWhatsappSettingsIndexRoute
   '/workspace-details': typeof DashboardLayoutWorkspaceDetailsIndexRoute
   '/workspace-logs': typeof DashboardLayoutWorkspaceLogsIndexRoute
   '/general-templates/lead-template': typeof DashboardLayoutGeneralTemplatesLeadTemplateIndexRoute
@@ -748,6 +768,7 @@ export interface FileRoutesById {
   '/_dashboardLayout/user-profile/': typeof DashboardLayoutUserProfileIndexRoute
   '/_dashboardLayout/users/': typeof DashboardLayoutUsersIndexRoute
   '/_dashboardLayout/whatsapp-automation-rules/': typeof DashboardLayoutWhatsappAutomationRulesIndexRoute
+  '/_dashboardLayout/whatsapp-settings/': typeof DashboardLayoutWhatsappSettingsIndexRoute
   '/_dashboardLayout/workspace-details/': typeof DashboardLayoutWorkspaceDetailsIndexRoute
   '/_dashboardLayout/workspace-logs/': typeof DashboardLayoutWorkspaceLogsIndexRoute
   '/_dashboardLayout/general-templates/lead-template/': typeof DashboardLayoutGeneralTemplatesLeadTemplateIndexRoute
@@ -786,6 +807,7 @@ export interface FileRouteTypes {
     | '/user-profile'
     | '/users'
     | '/whatsapp-automation-rules'
+    | '/whatsapp-settings'
     | '/workspace-details'
     | '/workspace-logs'
     | '/general-templates/lead-template'
@@ -820,6 +842,7 @@ export interface FileRouteTypes {
     | '/user-profile'
     | '/users'
     | '/whatsapp-automation-rules'
+    | '/whatsapp-settings'
     | '/workspace-details'
     | '/workspace-logs'
     | '/general-templates/lead-template'
@@ -857,6 +880,7 @@ export interface FileRouteTypes {
     | '/_dashboardLayout/user-profile/'
     | '/_dashboardLayout/users/'
     | '/_dashboardLayout/whatsapp-automation-rules/'
+    | '/_dashboardLayout/whatsapp-settings/'
     | '/_dashboardLayout/workspace-details/'
     | '/_dashboardLayout/workspace-logs/'
     | '/_dashboardLayout/general-templates/lead-template/'
@@ -931,6 +955,7 @@ export const routeTree = rootRoute
         "/_dashboardLayout/user-profile/",
         "/_dashboardLayout/users/",
         "/_dashboardLayout/whatsapp-automation-rules/",
+        "/_dashboardLayout/whatsapp-settings/",
         "/_dashboardLayout/workspace-details/",
         "/_dashboardLayout/workspace-logs/",
         "/_dashboardLayout/general-templates/lead-template/",
@@ -1047,6 +1072,10 @@ export const routeTree = rootRoute
     },
     "/_dashboardLayout/whatsapp-automation-rules/": {
       "filePath": "_dashboardLayout/whatsapp-automation-rules/index.tsx",
+      "parent": "/_dashboardLayout"
+    },
+    "/_dashboardLayout/whatsapp-settings/": {
+      "filePath": "_dashboardLayout/whatsapp-settings/index.tsx",
       "parent": "/_dashboardLayout"
     },
     "/_dashboardLayout/workspace-details/": {

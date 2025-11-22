@@ -4,10 +4,11 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 export const userQueryOptions = {
   queryKey: ["user"],
   queryFn: () => {
-    return getData("user"); // Directly return the parsed user or null
+    console.log(getData, 'getet')
+    return getData("user"); 
   },
   initialData: () => {
-    return getData("user"); // Directly return the parsed user or null
+    return getData("user"); 
   },
 };
 

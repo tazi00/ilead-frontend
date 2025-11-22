@@ -70,19 +70,19 @@ function FollowUp() {
                         </div>
                         <div className="flex">
                           <span className="font-semibold w-32">Email:</span>
-                          <span>{"-"}</span>
+                          <span>{item.email || "-"}</span>
                         </div>
                         <div className="flex">
                           <span className="font-semibold w-32">Mobile:</span>
-                          <span>{"-"}</span>
+                          <span>{item.phone_number || "-"}</span>
                         </div>
                         <div className="flex">
                           <span className="font-semibold w-32">Company:</span>
-                          <span>{"-"}</span>
+                          <span>{item.company_name || "-"}</span>
                         </div>
                         <div className="flex">
                           <span className="font-semibold w-32">Address:</span>
-                          <span>{"-"}</span>
+                          <span>{item.company_name || "-"}</span>
                         </div>
                         <div className="flex">
                           <span className="font-semibold w-32">
